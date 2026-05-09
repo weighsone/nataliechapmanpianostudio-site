@@ -54,18 +54,18 @@ const differentiators = [
 <Layout title="Home" description="Creative, flexible and fun piano lessons in Orewa, Auckland. All ages and levels welcome. Book a lesson with Natalie Chapman today.">
 
   <!-- Hero -->
-  <section class="relative overflow-hidden bg-gradient-to-br from-purple-dark via-purple to-purple-light/30 text-white">
-    <!-- Piano keys decorative strip -->
-    <div class="absolute bottom-0 left-0 right-0 flex h-20 opacity-10 pointer-events-none" aria-hidden="true">
-      {Array.from({ length: 28 }).map((_, i) => (
-        <div class={`flex-1 border-r border-white/30 ${[1,4,6,9,11,13,16,18,21,23,25].includes(i % 14) ? 'bg-black h-12 self-start' : 'bg-white'}`} />
-      ))}
-    </div>
+  <section class="relative min-h-[85vh] flex items-center overflow-hidden">
+    <img
+      src={u('/images/piano-keys.jpg')}
+      alt="Stairs painted as piano keys"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#082e32]/90 via-[#082e32]/70 to-[#082e32]/30"></div>
 
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36">
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
       <div class="max-w-2xl">
-        <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-4">Orewa, Auckland · All Ages Welcome</p>
-        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-4">Orewa, Auckland · All Ages Welcome</p>
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
           Creative, flexible<br />and <em>fun</em> — come<br />join the music journey!
         </h1>
         <p class="text-lg text-white/80 mb-8 leading-relaxed">
@@ -74,7 +74,7 @@ const differentiators = [
         <div class="flex flex-wrap gap-4">
           <a
             href={u('/contact')}
-            class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-purple bg-white hover:bg-cream-dark transition-colors"
+            class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-ink bg-white hover:bg-brand-light transition-colors"
           >
             Book a Free Intro Lesson
           </a>
@@ -93,7 +93,7 @@ const differentiators = [
   <section class="py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-14">
-        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">The Studio Difference</p>
+        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">The Studio Difference</p>
         <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-4">
           What Makes Our Studio Different
         </h2>
@@ -102,16 +102,25 @@ const differentiators = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         {differentiators.map(item => (
           <div class="bg-white rounded-2xl p-6 border border-linen hover:shadow-md transition-shadow">
-            <div class="w-10 h-10 rounded-xl bg-purple-light flex items-center justify-center mb-4">
-              <svg class="w-5 h-5 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={item.icon} />
+            <div class="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-4">
+              <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={item.icon} />
             </div>
             <h3 class="font-semibold text-ink mb-2">{item.title}</h3>
             <p class="text-sm text-ink-muted leading-relaxed">{item.body}</p>
           </div>
         ))}
+      </div>
+
+      <!-- Studio photo -->
+      <div class="rounded-2xl overflow-hidden shadow-lg">
+        <img
+          src={u('/images/studio-interior.jpg')}
+          alt="Student at the piano in Natalie's studio"
+          class="w-full h-72 md:h-96 object-cover object-top"
+        />
       </div>
     </div>
   </section>
@@ -120,46 +129,42 @@ const differentiators = [
   <section class="bg-cream-dark py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <!-- Portrait -->
+        <div class="flex justify-center md:justify-start">
+          <div class="relative">
+            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <img
+                src={u('/images/natalie-portrait.png')}
+                alt="Natalie Chapman, piano teacher"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg">
+              Teaching since 2018
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
         <div>
-          <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Your Teacher</p>
+          <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Your Teacher</p>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-6">
             Meet Natalie Chapman
           </h2>
           <p class="text-ink-muted leading-relaxed mb-4">
-            Natalie is a lifelong musician raised by two musical parents. She began formal piano training at age five and earned her Trinity College Grade 8 certification at 15. With over 30 years of experience across classical, contemporary, and jazz styles, she brings a deep and genuine love of music to every lesson.
+            Natalie is a lifelong musician with over 30 years of experience across classical, contemporary, and jazz styles. She earned her Trinity College Grade 8 at 15 and completed the IRMT diploma <em>with distinction</em> after launching her teaching practice in 2018.
           </p>
           <p class="text-ink-muted leading-relaxed mb-6">
-            Since launching her teaching practice in 2018 and completing the Institute of Registered Music Teachers (IRMT) diploma <em>with distinction</em>, her studio has grown almost entirely through word-of-mouth — the best endorsement of all.
+            Her studio has grown almost entirely through word-of-mouth — the best endorsement of all.
           </p>
-          <p class="font-display text-xl text-purple italic mb-8">"Let's Love Music Together!"</p>
-          <a href={u('/about')} class="inline-flex items-center gap-2 text-purple font-semibold hover:text-purple-dark transition-colors">
+          <p class="font-display text-xl text-brand italic mb-8">"Let's Love Music Together!"</p>
+          <a href={u('/about')} class="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors">
             Read more about Natalie
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </a>
-        </div>
-
-        <div class="bg-white rounded-2xl p-8 border border-linen">
-          <h3 class="font-display text-xl font-semibold text-ink mb-6">Studio at a Glance</h3>
-          <ul class="space-y-4">
-            {[
-              ['Location', 'Orewa, Auckland (+ online lessons)'],
-              ['Teaching since', '2018'],
-              ['Qualification', 'IRMT Diploma — with distinction'],
-              ['Trinity College', 'Grade 8 certified'],
-              ['Styles', 'Classical, contemporary, jazz, pop, church'],
-              ['Ages', 'All ages from around 5 years'],
-            ].map(([label, value]) => (
-              <li class="flex gap-3">
-                <span class="w-2 h-2 rounded-full bg-gold mt-2 shrink-0" />
-                <div>
-                  <span class="text-xs text-ink-muted uppercase tracking-wide block">{label}</span>
-                  <span class="text-sm text-ink font-medium">{value}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </div>
@@ -168,51 +173,63 @@ const differentiators = [
   <!-- Testimonials -->
   <section class="py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-14">
-        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Testimonials</p>
-        <h2 class="font-display text-3xl md:text-4xl font-bold text-ink">
-          What Students & Parents Say
-        </h2>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {testimonials.map(t => (
-          <div class="bg-white rounded-2xl p-6 border border-linen flex flex-col">
-            <svg class="w-8 h-8 text-gold mb-4 shrink-0" fill="currentColor" viewBox="0 0 32 32">
-              <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z" />
-            </svg>
-            <p class="text-ink-muted text-sm leading-relaxed flex-grow italic mb-6">
-              "{t.quote}"
-            </p>
-            <div>
-              <p class="font-semibold text-ink text-sm">{t.name}</p>
-              <p class="text-xs text-ink-muted">{t.role}</p>
-            </div>
+        <!-- Testimonial cards -->
+        <div>
+          <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Testimonials</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-8">
+            What Students &amp; Parents Say
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {testimonials.map(t => (
+              <div class="bg-white rounded-2xl p-5 border border-linen flex flex-col">
+                <svg class="w-7 h-7 text-brand mb-3 shrink-0" fill="currentColor" viewBox="0 0 32 32">
+                  <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.654 1.346-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.654 1.346-3 3-3V8z" />
+                </svg>
+                <p class="text-ink-muted text-sm leading-relaxed flex-grow italic mb-4">"{t.quote}"</p>
+                <div>
+                  <p class="font-semibold text-ink text-sm">{t.name}</p>
+                  <p class="text-xs text-ink-muted">{t.role}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <!-- Students photo -->
+        <div class="flex justify-center">
+          <div class="rounded-2xl overflow-hidden shadow-xl max-w-sm w-full">
+            <img
+              src={u('/images/students.jpg')}
+              alt="Happy piano students holding musical note cookies"
+              class="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA Banner -->
-  <section class="bg-gold-light border-y border-linen py-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-4">
+  <section class="relative overflow-hidden bg-brand py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-white mb-4">
         Ready to Start Your Music Journey?
       </h2>
-      <p class="text-ink-muted max-w-xl mx-auto mb-8 leading-relaxed">
+      <p class="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
         Get in touch to book a free introductory lesson. No pressure — just music.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href={u('/contact')}
-          class="px-6 py-3 rounded-lg font-semibold text-white bg-purple hover:bg-purple-dark transition-colors"
+          class="px-6 py-3 rounded-lg font-semibold text-brand bg-white hover:bg-brand-light transition-colors"
         >
           Get in Touch
         </a>
         <a
           href={u('/faq')}
-          class="px-6 py-3 rounded-lg font-semibold text-purple border border-purple hover:bg-purple-light transition-colors"
+          class="px-6 py-3 rounded-lg font-semibold text-white border border-white/40 hover:bg-white/10 transition-colors"
         >
           Read the FAQ
         </a>

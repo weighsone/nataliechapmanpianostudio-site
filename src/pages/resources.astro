@@ -65,7 +65,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
 >
 
   <!-- Page Header -->
-  <section class="bg-gradient-to-br from-purple-dark to-purple text-white py-16 md:py-24">
+  <section class="bg-gradient-to-br from-[#082e32] to-[#0b9199] text-white py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">Helpful Links</p>
       <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Resources</h1>
@@ -79,7 +79,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
   <section class="py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12">
-        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Practice Tools</p>
+        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Practice Tools</p>
         <h2 class="font-display text-3xl font-bold text-ink mb-4">Recommended Apps</h2>
         <p class="text-ink-muted max-w-2xl leading-relaxed">
           These apps make practising between lessons more enjoyable. Games and interactive tools can reinforce note reading and rhythm skills in a fun way.
@@ -98,7 +98,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
                   <h4 class="font-semibold text-ink">{app.name}</h4>
                   <div class="flex gap-1 shrink-0">
                     {app.platforms.map(p => (
-                      <span class="text-[10px] font-medium bg-purple-light text-purple px-2 py-0.5 rounded-full">
+                      <span class="text-[10px] font-medium bg-brand-light text-brand px-2 py-0.5 rounded-full">
                         {p}
                       </span>
                     ))}
@@ -117,7 +117,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
   <section class="bg-cream-dark py-20 border-y border-linen">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-10">
-        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Where to Buy</p>
+        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Where to Buy</p>
         <h2 class="font-display text-3xl font-bold text-ink mb-4">Instrument Retailers</h2>
         <p class="text-ink-muted max-w-2xl leading-relaxed">
           New Zealand suppliers for digital pianos, keyboards, and accessories. For beginners, a digital keyboard with weighted keys is a great starting point. Ask me for specific recommendations at any time.
@@ -130,15 +130,15 @@ const appCategories = [...new Set(apps.map(a => a.category))];
             href={r.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-white rounded-xl border border-linen p-5 flex items-start gap-4 hover:border-purple hover:shadow-sm transition-all group"
+            class="bg-white rounded-xl border border-linen p-5 flex items-start gap-4 hover:border-brand hover:shadow-sm transition-all group"
           >
-            <div class="w-9 h-9 rounded-lg bg-purple-light flex items-center justify-center shrink-0 group-hover:bg-purple transition-colors">
-              <svg class="w-4 h-4 text-purple group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-9 h-9 rounded-lg bg-brand-light flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors">
+              <svg class="w-4 h-4 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>
             <div>
-              <p class="font-semibold text-ink group-hover:text-purple transition-colors">{r.name}</p>
+              <p class="font-semibold text-ink group-hover:text-brand transition-colors">{r.name}</p>
               <p class="text-sm text-ink-muted">{r.note}</p>
             </div>
           </a>
@@ -151,7 +151,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
   <section class="py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-10">
-        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Sheet Music</p>
+        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Sheet Music</p>
         <h2 class="font-display text-3xl font-bold text-ink mb-4">Where to Find Sheet Music</h2>
         <p class="text-ink-muted max-w-2xl leading-relaxed">
           Method books and sheet music are available both locally and online. Note that online international orders may have longer delivery times — plan ahead for method books in particular.
@@ -164,9 +164,9 @@ const appCategories = [...new Set(apps.map(a => a.category))];
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-white rounded-xl border border-linen p-5 text-center hover:border-purple hover:shadow-sm transition-all group"
+            class="bg-white rounded-xl border border-linen p-5 text-center hover:border-brand hover:shadow-sm transition-all group"
           >
-            <p class="font-semibold text-ink group-hover:text-purple transition-colors mb-1">{s.name}</p>
+            <p class="font-semibold text-ink group-hover:text-brand transition-colors mb-1">{s.name}</p>
             <p class="text-xs text-ink-muted">{s.type}</p>
           </a>
         ))}

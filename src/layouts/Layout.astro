@@ -44,15 +44,16 @@ const isActive = (href: string) =>
   </head>
   <body class="min-h-screen flex flex-col antialiased">
 
-    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-linen">
+    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-linen shadow-sm">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 md:h-20">
 
-          <a href={u('/')} class="flex flex-col leading-tight group shrink-0">
-            <span class="text-lg md:text-xl font-display font-semibold text-purple group-hover:text-purple-dark transition-colors">
-              Natalie Chapman
-            </span>
-            <span class="text-[10px] md:text-xs text-ink-muted tracking-widest uppercase">Piano Studio</span>
+          <a href={u('/')} class="flex items-center shrink-0">
+            <img
+              src={u('/images/logo.png')}
+              alt="Natalie Chapman Piano Studio"
+              class="h-12 md:h-14 w-auto"
+            />
           </a>
 
           <nav class="hidden md:flex items-center gap-0.5">
@@ -61,7 +62,7 @@ const isActive = (href: string) =>
                 href={link.href}
                 class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive(link.href)
-                    ? 'text-purple bg-purple-light'
+                    ? 'text-brand bg-brand-light'
                     : 'text-ink-muted hover:text-ink hover:bg-cream-dark'
                 }`}
               >
@@ -73,7 +74,7 @@ const isActive = (href: string) =>
           <div class="flex items-center gap-3">
             <a
               href={u('/contact')}
-              class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-purple hover:bg-purple-dark transition-colors"
+              class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-brand hover:bg-brand-dark transition-colors"
             >
               Book a Lesson
             </a>
@@ -99,7 +100,7 @@ const isActive = (href: string) =>
             <a
               href={link.href}
               class={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                isActive(link.href) ? 'text-purple bg-purple-light' : 'text-ink-muted hover:bg-cream-dark'
+                isActive(link.href) ? 'text-brand bg-brand-light' : 'text-ink-muted hover:bg-cream-dark'
               }`}
             >
               {link.label}
@@ -108,7 +109,7 @@ const isActive = (href: string) =>
           <div class="pt-2 border-t border-linen">
             <a
               href={u('/contact')}
-              class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-white bg-purple text-center"
+              class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-white bg-brand text-center"
             >
               Book a Lesson
             </a>
@@ -126,8 +127,13 @@ const isActive = (href: string) =>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
 
           <div>
-            <p class="font-display text-xl text-white mb-0.5">Natalie Chapman</p>
-            <p class="text-xs text-gold tracking-widest uppercase mb-4">Piano Studio</p>
+            <a href={u('/')} class="inline-block mb-4">
+              <img
+                src={u('/images/logo.png')}
+                alt="Natalie Chapman Piano Studio"
+                class="h-16 w-auto brightness-0 invert opacity-80"
+              />
+            </a>
             <p class="text-sm leading-relaxed">
               Creative, flexible and fun piano lessons for students of all ages in Orewa, Auckland.
               Let&rsquo;s love music together!

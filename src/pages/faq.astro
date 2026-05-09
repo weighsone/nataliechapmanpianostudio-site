@@ -82,7 +82,7 @@ const faqs = [
 >
 
   <!-- Page Header -->
-  <section class="bg-gradient-to-br from-purple-dark to-purple text-white py-16 md:py-24">
+  <section class="bg-gradient-to-br from-[#082e32] to-[#0b9199] text-white py-16 md:py-24">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">Common Questions</p>
       <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
@@ -105,7 +105,7 @@ const faqs = [
               {group.items.map(item => (
                 <details class="group py-5">
                   <summary class="flex justify-between items-start gap-4 cursor-pointer list-none">
-                    <span class="font-semibold text-ink group-open:text-purple transition-colors">{item.q}</span>
+                    <span class="font-semibold text-ink group-open:text-brand transition-colors">{item.q}</span>
                     <svg
                       class="w-5 h-5 text-ink-muted shrink-0 mt-0.5 transition-transform group-open:rotate-180"
                       fill="none"
@@ -134,7 +134,7 @@ const faqs = [
       </p>
       <a
         href={u('/contact')}
-        class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-white bg-purple hover:bg-purple-dark transition-colors"
+        class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-white bg-brand hover:bg-brand-dark transition-colors"
       >
         Get in Touch
       </a>
