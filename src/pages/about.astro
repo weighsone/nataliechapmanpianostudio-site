@@ -1,0 +1,152 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (path: string) => `${base}${path}`;
+
+const pianoBenefits = [
+  'Piano is often used as the foundation for learning music theory and understanding musical notation.',
+  'Piano playing can improve memory, concentration, and problem-solving skills.',
+  'Learning piano develops fine motor skills and hand-eye coordination.',
+  'Music provides a healthy creative outlet for self-expression and emotional wellbeing.',
+  'Piano skills open the door to understanding and playing many other instruments.',
+  'Regular practice builds discipline, patience, and a sense of achievement.',
+  'Piano can reduce stress and anxiety — playing music is deeply meditative.',
+  'Music connects people socially, from joining a band to playing at family gatherings.',
+  'Piano is a lifelong skill that brings joy at every age and stage of life.',
+  'Students can explore a huge range of genres — classical, jazz, pop, gospel, and more.',
+  'Learning music sharpens listening skills and an appreciation for sound.',
+];
+---
+
+<Layout
+  title="About Us"
+  description="Meet Natalie Chapman — piano teacher in Orewa, Auckland with over 30 years of musical experience and an IRMT diploma with distinction."
+>
+
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-purple-dark to-purple text-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">Our Story</p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold">About Us</h1>
+    </div>
+  </section>
+
+  <!-- Meet the Teacher -->
+  <section class="py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- Sidebar card -->
+        <div class="lg:col-span-1">
+          <div class="bg-white rounded-2xl border border-linen p-8 sticky top-24">
+            <div class="w-20 h-20 rounded-full bg-purple-light flex items-center justify-center mb-4">
+              <svg class="w-10 h-10 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h2 class="font-display text-xl font-semibold text-ink mb-1">Natalie Chapman</h2>
+            <p class="text-sm text-gold font-medium mb-4">Piano Teacher</p>
+            <ul class="space-y-3 text-sm">
+              {[
+                ['Teaching since', '2018'],
+                ['Experience', '30+ years playing'],
+                ['Qualification', 'IRMT Diploma (Distinction)'],
+                ['Trinity College', 'Grade 8'],
+                ['Location', 'Orewa, Auckland'],
+                ['Online lessons', 'Available via Zoom'],
+              ].map(([label, value]) => (
+                <li class="flex flex-col">
+                  <span class="text-xs text-ink-muted uppercase tracking-wide">{label}</span>
+                  <span class="text-ink font-medium">{value}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href={u('/contact')}
+              class="mt-6 block text-center px-4 py-2.5 rounded-lg font-semibold text-white bg-purple hover:bg-purple-dark transition-colors text-sm"
+            >
+              Book a Lesson
+            </a>
+          </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="lg:col-span-2 space-y-10">
+
+          <div>
+            <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Meet The Teacher</p>
+            <h2 class="font-display text-3xl font-bold text-ink mb-6">A Lifelong Love of Music</h2>
+            <div class="space-y-4 text-ink-muted leading-relaxed">
+              <p>
+                Natalie is a lifelong musician raised by two musical parents who gave her a deep appreciation for music from an early age. She began formal piano training at the age of five and went on to earn her Trinity College Grade 8 certification at just 15 years old — a milestone that reflected not only her talent, but her dedication to the craft.
+              </p>
+              <p>
+                With over 30 years of playing experience across classical, contemporary, and jazz styles, Natalie brings a breadth of musical knowledge to her teaching. She launched her teaching practice in 2018 and completed the Institute of Registered Music Teachers (IRMT) diploma <em>with distinction</em> — cementing both her expertise and her commitment to excellent music education.
+              </p>
+              <p>
+                Her studio has grown almost entirely through word-of-mouth referrals from happy students and parents, which she considers the best endorsement of all.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">Studio Mission</p>
+            <h2 class="font-display text-3xl font-bold text-ink mb-6">Let's Love Music Together!</h2>
+            <div class="bg-purple-light rounded-2xl p-8 border border-purple/20">
+              <p class="text-ink leading-relaxed mb-4">
+                The studio's mission is simple: <strong>providing engaging piano lessons that are positive, fun and student-centred.</strong>
+              </p>
+              <p class="text-ink-muted leading-relaxed mb-4">
+                Every student is different — different age, different goals, different learning style. Rather than following a rigid curriculum, Natalie takes the time to understand what motivates each student and designs lessons around that.
+              </p>
+              <p class="text-ink-muted leading-relaxed">
+                Whether a student wants to prepare for Trinity College exams, play worship music at church, perform pop songs at a school concert, or simply enjoy music for the love of it — Natalie's approach is to focus not only on progress but also on creativity, musical exploration, and the sheer joy of playing.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits of Learning Piano -->
+  <section class="bg-cream-dark py-20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <p class="text-purple text-sm font-semibold tracking-widest uppercase mb-3">The Case for Piano</p>
+        <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-4">Why Learn Piano?</h2>
+        <p class="text-ink-muted max-w-xl mx-auto leading-relaxed">
+          The benefits of learning piano extend far beyond being able to play a song. Here's why so many families choose piano as their first instrument.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {pianoBenefits.map((benefit, i) => (
+          <div class="bg-white rounded-xl p-5 border border-linen flex gap-4">
+            <div class="shrink-0 w-7 h-7 rounded-full bg-gold-light flex items-center justify-center">
+              <span class="text-xs font-bold text-gold">{i + 1}</span>
+            </div>
+            <p class="text-sm text-ink-muted leading-relaxed">{benefit}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 text-center">
+    <div class="max-w-xl mx-auto px-4">
+      <h2 class="font-display text-2xl md:text-3xl font-bold text-ink mb-4">Ready to get started?</h2>
+      <p class="text-ink-muted mb-8">Book a free introductory lesson and let's see if the studio is the right fit for you.</p>
+      <a
+        href={u('/contact')}
+        class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-white bg-purple hover:bg-purple-dark transition-colors"
+      >
+        Book a Free Intro Lesson
+      </a>
+    </div>
+  </section>
+
+</Layout>

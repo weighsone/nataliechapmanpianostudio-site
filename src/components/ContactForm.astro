@@ -1,0 +1,227 @@
+---
+// Formbricks config — values are baked in at build time by Vite.
+// Set PUBLIC_FORMBRICKS_ENV_ID and PUBLIC_FORMBRICKS_SURVEY_ID as GitHub
+// repository variables (Settings → Secrets and variables → Variables).
+// Set PUBLIC_FB_Q_* vars to the question IDs from your Formbricks survey.
+const formbricksConfigured =
+  import.meta.env.PUBLIC_FORMBRICKS_ENV_ID &&
+  import.meta.env.PUBLIC_FORMBRICKS_SURVEY_ID;
+---
+
+<div class="bg-white rounded-2xl border border-linen p-8">
+  <h2 class="font-display text-2xl font-bold text-ink mb-2">Send a Message</h2>
+  <p class="text-ink-muted text-sm mb-8">
+    Fill in the form below and I will get back to you as soon as possible.
+  </p>
+
+  <form id="contact-form" novalidate>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+      <div>
+        <label for="field-name" class="block text-sm font-medium text-ink mb-1.5">
+          Your Name <span class="text-purple">*</span>
+        </label>
+        <input
+          type="text"
+          id="field-name"
+          name="name"
+          required
+          autocomplete="name"
+          class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors"
+          placeholder="Jane Smith"
+        />
+      </div>
+
+      <div>
+        <label for="field-phone" class="block text-sm font-medium text-ink mb-1.5">Phone Number</label>
+        <input
+          type="tel"
+          id="field-phone"
+          name="phone"
+          autocomplete="tel"
+          class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors"
+          placeholder="+64 21 000 0000"
+        />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+      <div>
+        <label for="field-email" class="block text-sm font-medium text-ink mb-1.5">
+          Your Email <span class="text-purple">*</span>
+        </label>
+        <input
+          type="email"
+          id="field-email"
+          name="email"
+          required
+          autocomplete="email"
+          class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors"
+          placeholder="jane@example.com"
+        />
+      </div>
+
+      <div>
+        <label for="field-student" class="block text-sm font-medium text-ink mb-1.5">Student Name</label>
+        <input
+          type="text"
+          id="field-student"
+          name="studentName"
+          class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors"
+          placeholder="If different from above"
+        />
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <label for="field-subject" class="block text-sm font-medium text-ink mb-1.5">Subject</label>
+      <input
+        type="text"
+        id="field-subject"
+        name="subject"
+        class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors"
+        placeholder="e.g. Booking an introductory lesson"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label for="field-message" class="block text-sm font-medium text-ink mb-1.5">
+        Your Question <span class="text-purple">*</span>
+      </label>
+      <textarea
+        id="field-message"
+        name="message"
+        required
+        rows="5"
+        class="w-full px-4 py-2.5 rounded-lg border border-linen bg-cream text-ink placeholder:text-ink-muted/60 focus:outline-none focus:border-purple focus:ring-2 focus:ring-purple/20 transition-colors resize-none"
+        placeholder="Tell me a bit about yourself or your child, your goals, and any questions you have…"
+      ></textarea>
+    </div>
+
+    <!-- Status messages -->
+    <div id="form-error" class="hidden mb-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-700 text-sm"></div>
+    <div id="form-success" class="hidden mb-4 p-4 rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm"></div>
+
+    <button
+      type="submit"
+      id="submit-btn"
+      class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold text-white bg-purple hover:bg-purple-dark disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+    >
+      <span id="btn-label">Send Message</span>
+      <svg id="btn-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+    </button>
+
+    <p class="mt-3 text-xs text-ink-muted">
+      Fields marked <span class="text-purple">*</span> are required.
+    </p>
+  </form>
+</div>
+
+<script>
+  const FORMBRICKS_BASE = 'https://forms.jono.rocks';
+  const ENV_ID = import.meta.env.PUBLIC_FORMBRICKS_ENV_ID;
+  const SURVEY_ID = import.meta.env.PUBLIC_FORMBRICKS_SURVEY_ID;
+
+  // Question IDs from your Formbricks contact form survey.
+  // After creating the survey, replace these with the actual IDs shown in the editor.
+  const FIELDS = {
+    name:        import.meta.env.PUBLIC_FB_Q_NAME    ?? 'name',
+    phone:       import.meta.env.PUBLIC_FB_Q_PHONE   ?? 'phone',
+    email:       import.meta.env.PUBLIC_FB_Q_EMAIL   ?? 'email',
+    studentName: import.meta.env.PUBLIC_FB_Q_STUDENT ?? 'studentName',
+    subject:     import.meta.env.PUBLIC_FB_Q_SUBJECT ?? 'subject',
+    message:     import.meta.env.PUBLIC_FB_Q_MESSAGE ?? 'message',
+  };
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const btnLabel = document.getElementById('btn-label');
+  const btnSpinner = document.getElementById('btn-spinner');
+  const errorBox = document.getElementById('form-error');
+  const successBox = document.getElementById('form-success');
+
+  function setLoading(loading: boolean) {
+    if (!submitBtn || !btnLabel || !btnSpinner) return;
+    submitBtn.disabled = loading;
+    btnLabel.textContent = loading ? 'Sending…' : 'Send Message';
+    btnSpinner.classList.toggle('hidden', !loading);
+  }
+
+  function showError(msg: string) {
+    if (!errorBox) return;
+    errorBox.textContent = msg;
+    errorBox.classList.remove('hidden');
+    successBox?.classList.add('hidden');
+  }
+
+  function showSuccess() {
+    if (!successBox || !form) return;
+    successBox.textContent = "Thanks! Your message has been sent. I'll be in touch soon.";
+    successBox.classList.remove('hidden');
+    errorBox?.classList.add('hidden');
+    form.reset();
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    errorBox?.classList.add('hidden');
+    successBox?.classList.add('hidden');
+
+    const data = new FormData(form);
+    const name    = (data.get('name') as string)?.trim();
+    const email   = (data.get('email') as string)?.trim();
+    const message = (data.get('message') as string)?.trim();
+
+    if (!name || !email || !message) {
+      showError('Please fill in all required fields.');
+      return;
+    }
+
+    if (!ENV_ID || !SURVEY_ID) {
+      // Formbricks not configured — fall back to mailto
+      const subject = encodeURIComponent((data.get('subject') as string) || 'Enquiry from website');
+      const body    = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${data.get('phone') || 'not provided'}\nStudent: ${data.get('studentName') || 'not provided'}\n\n${message}`);
+      window.location.href = `mailto:nataliechapmanpianostudio@gmail.com?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${FORMBRICKS_BASE}/api/v1/client/${ENV_ID}/responses`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          surveyId: SURVEY_ID,
+          finished: true,
+          data: {
+            [FIELDS.name]:        name,
+            [FIELDS.phone]:       data.get('phone') || '',
+            [FIELDS.email]:       email,
+            [FIELDS.studentName]: data.get('studentName') || '',
+            [FIELDS.subject]:     data.get('subject') || '',
+            [FIELDS.message]:     message,
+          },
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error((body as any).message || `Server error (${res.status})`);
+      }
+
+      showSuccess();
+    } catch (err) {
+      showError(
+        err instanceof Error
+          ? `Sorry, something went wrong: ${err.message}. Please email nataliechapmanpianostudio@gmail.com directly.`
+          : 'An unexpected error occurred. Please try emailing directly.'
+      );
+    } finally {
+      setLoading(false);
+    }
+  });
+</script>

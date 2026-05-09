@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<Layout
+  title="Contact Us"
+  description="Book a piano lesson or ask a question. Get in touch with Natalie Chapman Piano Studio in Orewa, Auckland."
+>
+
+  <!-- Page Header -->
+  <section class="bg-gradient-to-br from-purple-dark to-purple text-white py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">Say Hello</p>
+      <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+      <p class="text-white/80 max-w-xl leading-relaxed">
+        Ready to get started, or just have a question? Fill in the form and I will be in touch soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-1 space-y-8">
+
+          <div>
+            <h2 class="font-display text-2xl font-bold text-ink mb-6">Get in Touch</h2>
+            <ul class="space-y-5">
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-light flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-ink-muted uppercase tracking-wide mb-1">Studio Location</p>
+                  <p class="text-ink font-medium">15a Ngahere Views<br />Orewa, Auckland 0931<br />New Zealand</p>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-light flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-ink-muted uppercase tracking-wide mb-1">Email</p>
+                  <a
+                    href="mailto:nataliechapmanpianostudio@gmail.com"
+                    class="text-purple font-medium hover:text-purple-dark transition-colors break-all"
+                  >
+                    nataliechapmanpianostudio@gmail.com
+                  </a>
+                </div>
+              </li>
+
+              <li class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-purple-light flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-purple" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-xs text-ink-muted uppercase tracking-wide mb-1">Facebook</p>
+                  <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-purple font-medium hover:text-purple-dark transition-colors"
+                  >
+                    Visit our page
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-gold-light rounded-2xl p-6 border border-linen">
+            <h3 class="font-semibold text-ink mb-2">Free Intro Lesson</h3>
+            <p class="text-sm text-ink-muted leading-relaxed">
+              Not sure if the studio is the right fit? A free 30-minute introductory lesson is available for new students so you can get a feel for the teaching style before committing.
+            </p>
+          </div>
+
+          <div class="bg-cream-dark rounded-2xl p-6 border border-linen">
+            <h3 class="font-semibold text-ink mb-2">Online Lessons</h3>
+            <p class="text-sm text-ink-muted leading-relaxed">
+              Can't make it to Orewa? Online lessons via Zoom are available for students anywhere in New Zealand.
+            </p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <ContactForm />
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Musical note in studio purple -->
+  <rect width="32" height="32" rx="8" fill="#5b3a9a"/>
+  <!-- Note head -->
+  <ellipse cx="12" cy="22" rx="4" ry="3" fill="white" transform="rotate(-15 12 22)"/>
+  <!-- Note stem -->
+  <rect x="15.5" y="8" width="2" height="14" rx="1" fill="white"/>
+  <!-- Note flag -->
+  <path d="M17.5 8 Q26 11 23 17" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

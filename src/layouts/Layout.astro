@@ -1,0 +1,198 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Creative, flexible and fun piano lessons in Orewa, Auckland. Learn piano in a warm, encouraging studio environment with Natalie Chapman.',
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (path: string) => `${base}${path}`;
+
+const navLinks = [
+  { href: u('/'), label: 'Home' },
+  { href: u('/about'), label: 'About Us' },
+  { href: u('/faq'), label: 'FAQ' },
+  { href: u('/resources'), label: 'Resources' },
+  { href: u('/contact'), label: 'Contact Us' },
+];
+
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === u('/') ? currentPath === href : currentPath.startsWith(href);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={u('/favicon.svg')} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title} | Natalie Chapman Piano Studio</title>
+  </head>
+  <body class="min-h-screen flex flex-col antialiased">
+
+    <header class="bg-white/95 backdrop-blur-sm sticky top-0 z-50 border-b border-linen">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16 md:h-20">
+
+          <a href={u('/')} class="flex flex-col leading-tight group shrink-0">
+            <span class="text-lg md:text-xl font-display font-semibold text-purple group-hover:text-purple-dark transition-colors">
+              Natalie Chapman
+            </span>
+            <span class="text-[10px] md:text-xs text-ink-muted tracking-widest uppercase">Piano Studio</span>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-0.5">
+            {navLinks.map(link => (
+              <a
+                href={link.href}
+                class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  isActive(link.href)
+                    ? 'text-purple bg-purple-light'
+                    : 'text-ink-muted hover:text-ink hover:bg-cream-dark'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div class="flex items-center gap-3">
+            <a
+              href={u('/contact')}
+              class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold text-white bg-purple hover:bg-purple-dark transition-colors"
+            >
+              Book a Lesson
+            </a>
+            <button
+              id="mobile-menu-btn"
+              class="md:hidden p-2 rounded-md text-ink-muted hover:text-ink hover:bg-cream-dark transition-colors"
+              aria-label="Toggle menu"
+            >
+              <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden border-t border-linen bg-white">
+        <nav class="max-w-6xl mx-auto px-4 py-3 space-y-1">
+          {navLinks.map(link => (
+            <a
+              href={link.href}
+              class={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                isActive(link.href) ? 'text-purple bg-purple-light' : 'text-ink-muted hover:bg-cream-dark'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+          <div class="pt-2 border-t border-linen">
+            <a
+              href={u('/contact')}
+              class="block px-3 py-2.5 rounded-lg text-sm font-semibold text-white bg-purple text-center"
+            >
+              Book a Lesson
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="bg-ink text-gray-400">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+
+          <div>
+            <p class="font-display text-xl text-white mb-0.5">Natalie Chapman</p>
+            <p class="text-xs text-gold tracking-widest uppercase mb-4">Piano Studio</p>
+            <p class="text-sm leading-relaxed">
+              Creative, flexible and fun piano lessons for students of all ages in Orewa, Auckland.
+              Let&rsquo;s love music together!
+            </p>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-4 text-sm hover:text-white transition-colors"
+            >
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+              </svg>
+              Facebook
+            </a>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-white mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              {navLinks.map(link => (
+                <li>
+                  <a href={link.href} class="text-sm hover:text-white transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-semibold text-white mb-4">Get in Touch</h3>
+            <address class="not-italic space-y-2 text-sm">
+              <p>15a Ngahere Views<br />Orewa, Auckland 0931<br />New Zealand</p>
+              <p>
+                <a
+                  href="mailto:nataliechapmanpianostudio@gmail.com"
+                  class="hover:text-white transition-colors break-all"
+                >
+                  nataliechapmanpianostudio@gmail.com
+                </a>
+              </p>
+            </address>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-sm text-gray-600">
+          <p>&copy; {new Date().getFullYear()} Natalie Chapman Piano Studio. All rights reserved.</p>
+          <p>Orewa, Auckland, New Zealand</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const btn = document.getElementById('mobile-menu-btn');
+      const menu = document.getElementById('mobile-menu');
+      const openIcon = document.getElementById('menu-open-icon');
+      const closeIcon = document.getElementById('menu-close-icon');
+
+      btn?.addEventListener('click', () => {
+        const hidden = menu?.classList.contains('hidden');
+        menu?.classList.toggle('hidden', !hidden);
+        openIcon?.classList.toggle('hidden', !hidden);
+        closeIcon?.classList.toggle('hidden', hidden);
+      });
+    </script>
+  </body>
+</html>

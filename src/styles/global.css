@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #faf7f2;
+  --color-cream-dark: #f0ebe3;
+  --color-ink: #1c1713;
+  --color-ink-muted: #6b5c4d;
+  --color-purple: #5b3a9a;
+  --color-purple-dark: #4a2d85;
+  --color-purple-light: #ede8f7;
+  --color-gold: #c8923a;
+  --color-gold-light: #fef3e0;
+  --color-linen: #e8e2d8;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+}
