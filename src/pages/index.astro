@@ -56,11 +56,11 @@ const differentiators = [
   <!-- Hero -->
   <section class="relative min-h-[85vh] flex items-center overflow-hidden">
     <img
-      src={u('/images/piano-keys.jpg')}
-      alt="Stairs painted as piano keys"
+      src={u('/images/piano-hero.jpg')}
+      alt="Piano keys close-up"
       class="absolute inset-0 w-full h-full object-cover object-center"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-[#082e32]/90 via-[#082e32]/70 to-[#082e32]/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#082e32]/92 via-[#082e32]/75 to-[#082e32]/30"></div>
 
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
       <div class="max-w-2xl">
@@ -102,7 +102,7 @@ const differentiators = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {differentiators.map(item => (
           <div class="bg-white rounded-2xl p-6 border border-linen hover:shadow-md transition-shadow">
             <div class="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center mb-4">
@@ -113,40 +113,62 @@ const differentiators = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
 
-      <!-- Studio photo -->
-      <div class="rounded-2xl overflow-hidden shadow-lg">
-        <img
-          src={u('/images/studio-interior.jpg')}
-          alt="Student at the piano in Natalie's studio"
-          class="w-full h-72 md:h-96 object-cover object-top"
-        />
+  <!-- In the Studio -->
+  <section class="bg-cream-dark py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+        <div class="rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src={u('/images/studio-interior.jpg')}
+            alt="Student at the piano in Natalie's home studio"
+            class="w-full h-auto"
+          />
+        </div>
+
+        <div class="md:pt-8">
+          <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">The Studio</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-6">
+            A Space Where Music Comes Alive
+          </h2>
+          <p class="text-ink-muted leading-relaxed mb-6">
+            Natalie's warm home studio in Orewa is set up specifically for learning — with sheet music, educational materials, and a quality piano that students look forward to playing every week.
+          </p>
+          <ul class="space-y-3 mb-8">
+            {[
+              'Welcoming home studio in Orewa, Auckland',
+              'Online lessons via Zoom for students further afield',
+              'All lesson materials and resources provided',
+              'Flexible scheduling around your family',
+              'Free introductory lesson for new students',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-ink-muted text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a
+            href={u('/contact')}
+            class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-white bg-brand hover:bg-brand-dark transition-colors"
+          >
+            Book a Free Intro Lesson
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Meet the Teacher -->
-  <section class="bg-cream-dark py-20 md:py-28">
+  <section class="py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-        <!-- Portrait -->
-        <div class="flex justify-center md:justify-start">
-          <div class="relative">
-            <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-              <img
-                src={u('/images/natalie-portrait.png')}
-                alt="Natalie Chapman, piano teacher"
-                class="w-full h-full object-cover object-top"
-              />
-            </div>
-            <div class="absolute -bottom-4 -right-4 bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg">
-              Teaching since 2018
-            </div>
-          </div>
-        </div>
-
-        <!-- Content -->
         <div>
           <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Your Teacher</p>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-6">
@@ -166,17 +188,31 @@ const differentiators = [
             </svg>
           </a>
         </div>
+
+        <div class="flex justify-center">
+          <div class="relative">
+            <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <img
+                src={u('/images/natalie-portrait.png')}
+                alt="Natalie Chapman, piano teacher"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div class="absolute -bottom-4 -right-4 bg-brand text-white text-xs font-semibold px-4 py-2 rounded-full shadow-lg whitespace-nowrap">
+              Teaching since 2018
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="py-20 md:py-28">
+  <section class="bg-cream-dark py-20 md:py-28">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
-        <!-- Testimonial cards -->
-        <div>
+        <div class="lg:col-span-3">
           <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Testimonials</p>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-ink mb-8">
             What Students &amp; Parents Say
@@ -197,13 +233,12 @@ const differentiators = [
           </div>
         </div>
 
-        <!-- Students photo -->
-        <div class="flex justify-center">
-          <div class="rounded-2xl overflow-hidden shadow-xl max-w-sm w-full">
+        <div class="lg:col-span-2 flex justify-center lg:justify-end">
+          <div class="rounded-2xl overflow-hidden shadow-xl w-full max-w-xs">
             <img
               src={u('/images/students.jpg')}
               alt="Happy piano students holding musical note cookies"
-              class="w-full h-auto object-cover"
+              class="w-full h-auto"
             />
           </div>
         </div>

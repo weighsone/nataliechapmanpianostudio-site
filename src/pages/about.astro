@@ -25,8 +25,15 @@ const pianoBenefits = [
 >
 
   <!-- Page Header -->
-  <section class="bg-gradient-to-br from-[#082e32] to-[#0b9199] text-white py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="relative overflow-hidden text-white py-16 md:py-24">
+    <img
+      src={u('/images/piano-hero.jpg')}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-[#082e32]/82"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Our Story</p>
       <h1 class="font-display text-4xl md:text-5xl font-bold">About Us</h1>
     </div>
@@ -40,11 +47,13 @@ const pianoBenefits = [
         <!-- Sidebar card with portrait -->
         <div class="lg:col-span-1">
           <div class="bg-white rounded-2xl border border-linen overflow-hidden sticky top-24 shadow-sm">
-            <img
-              src={u('/images/natalie-about.jpg')}
-              alt="Natalie Chapman at the piano"
-              class="w-full h-64 object-cover object-top"
-            />
+            <div class="aspect-[3/4] overflow-hidden">
+              <img
+                src={u('/images/natalie-about.jpg')}
+                alt="Natalie Chapman at the piano"
+                class="w-full h-full object-cover object-top"
+              />
+            </div>
             <div class="p-6">
               <h2 class="font-display text-xl font-semibold text-ink mb-0.5">Natalie Chapman</h2>
               <p class="text-sm text-brand font-medium mb-4">Piano Teacher</p>
@@ -108,13 +117,25 @@ const pianoBenefits = [
             </div>
           </div>
 
-          <!-- Students photo -->
-          <div class="rounded-2xl overflow-hidden shadow-md">
-            <img
-              src={u('/images/students.jpg')}
-              alt="Jasper and Cooper, happy piano students"
-              class="w-full h-72 object-cover object-center"
-            />
+          <!-- Happy students callout -->
+          <div class="bg-white rounded-2xl border border-linen overflow-hidden shadow-sm">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-0">
+              <div class="overflow-hidden">
+                <img
+                  src={u('/images/students.jpg')}
+                  alt="Jasper and Cooper, happy piano students holding musical note cookies"
+                  class="w-full h-full object-cover"
+                  style="min-height: 280px;"
+                />
+              </div>
+              <div class="p-8 flex flex-col justify-center">
+                <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Happy Students</p>
+                <h3 class="font-display text-2xl font-bold text-ink mb-4">Results That Speak for Themselves</h3>
+                <p class="text-ink-muted text-sm leading-relaxed">
+                  Natalie's students consistently come back week after week — not because they have to, but because they want to. When learning is fun and feels personal, progress happens naturally.
+                </p>
+              </div>
+            </div>
           </div>
 
         </div>

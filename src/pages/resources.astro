@@ -1,39 +1,48 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const u = (path: string) => `${base}${path}`;
+
 const apps = [
   {
     name: 'Note Rush',
+    icon: '/images/app-note-rush.png',
     description: 'A fun and effective game for practising note reading on the music staff. Works across multiple instruments.',
     platforms: ['iOS', 'Android'],
     category: 'Note Reading & Theory',
   },
   {
     name: 'Flashnote Derby',
+    icon: '/images/app-flashnote-derby.png',
     description: 'Turns note memorisation into a fun and challenging game — race horses by identifying notes correctly!',
     platforms: ['iOS', 'Android'],
     category: 'Note Reading & Theory',
   },
   {
     name: 'Rhythm Swing',
+    icon: '/images/app-rhythm-swing.png',
     description: 'Teaches rhythm notation through interactive gameplay. Great for building a solid rhythmic foundation.',
     platforms: ['iPad', 'iPhone'],
     category: 'Note Reading & Theory',
   },
   {
     name: 'The Piano',
+    icon: '/images/app-the-piano.png',
     description: 'A free portable keyboard app — handy for when you are away from your piano and want to practise fingering or check a note.',
     platforms: ['iOS'],
     category: 'General Music',
   },
   {
     name: 'MuseScore',
+    icon: '/images/app-musescore.png',
     description: 'An excellent open-source library of sheet music with new pieces added daily. The free version gives access to thousands of scores.',
     platforms: ['iOS', 'Android', 'Desktop'],
     category: 'General Music',
   },
   {
     name: 'The Most Amazing Sheep Game',
+    icon: '/images/app-sheep-game.png',
     description: 'Rhythm and beat training disguised as entertainment. Surprisingly effective for building a sense of pulse.',
     platforms: ['iOS'],
     category: 'General Music',
@@ -65,9 +74,16 @@ const appCategories = [...new Set(apps.map(a => a.category))];
 >
 
   <!-- Page Header -->
-  <section class="bg-gradient-to-br from-[#082e32] to-[#0b9199] text-white py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">Helpful Links</p>
+  <section class="relative overflow-hidden text-white py-16 md:py-24">
+    <img
+      src={u('/images/piano-hero.jpg')}
+      alt=""
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-[#082e32]/82"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Helpful Links</p>
       <h1 class="font-display text-4xl md:text-5xl font-bold mb-4">Resources</h1>
       <p class="text-white/80 max-w-xl leading-relaxed">
         Apps, instrument retailers, and sheet music sources recommended for students at the studio.
@@ -93,15 +109,22 @@ const appCategories = [...new Set(apps.map(a => a.category))];
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {apps.filter(a => a.category === category).map(app => (
-              <div class="bg-white rounded-xl border border-linen p-5">
-                <div class="flex items-start justify-between gap-3 mb-3">
-                  <h4 class="font-semibold text-ink">{app.name}</h4>
-                  <div class="flex gap-1 shrink-0">
-                    {app.platforms.map(p => (
-                      <span class="text-[10px] font-medium bg-brand-light text-brand px-2 py-0.5 rounded-full">
-                        {p}
-                      </span>
-                    ))}
+              <div class="bg-white rounded-xl border border-linen p-5 flex flex-col">
+                <div class="flex items-start gap-4 mb-3">
+                  <img
+                    src={u(app.icon)}
+                    alt={`${app.name} icon`}
+                    class="w-14 h-14 rounded-xl object-cover shrink-0 border border-linen"
+                  />
+                  <div class="flex-1 min-w-0">
+                    <h4 class="font-semibold text-ink leading-tight mb-1">{app.name}</h4>
+                    <div class="flex flex-wrap gap-1">
+                      {app.platforms.map(p => (
+                        <span class="text-[10px] font-medium bg-brand-light text-brand px-2 py-0.5 rounded-full">
+                          {p}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <p class="text-sm text-ink-muted leading-relaxed">{app.description}</p>
@@ -113,36 +136,47 @@ const appCategories = [...new Set(apps.map(a => a.category))];
     </div>
   </section>
 
-  <!-- Instruments -->
+  <!-- Instrument Retailers -->
   <section class="bg-cream-dark py-20 border-y border-linen">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-10">
-        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Where to Buy</p>
-        <h2 class="font-display text-3xl font-bold text-ink mb-4">Instrument Retailers</h2>
-        <p class="text-ink-muted max-w-2xl leading-relaxed">
-          New Zealand suppliers for digital pianos, keyboards, and accessories. For beginners, a digital keyboard with weighted keys is a great starting point. Ask me for specific recommendations at any time.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {retailers.map(r => (
-          <a
-            href={r.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-white rounded-xl border border-linen p-5 flex items-start gap-4 hover:border-brand hover:shadow-sm transition-all group"
-          >
-            <div class="w-9 h-9 rounded-lg bg-brand-light flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors">
-              <svg class="w-4 h-4 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-semibold text-ink group-hover:text-brand transition-colors">{r.name}</p>
-              <p class="text-sm text-ink-muted">{r.note}</p>
-            </div>
-          </a>
-        ))}
+        <div>
+          <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Where to Buy</p>
+          <h2 class="font-display text-3xl font-bold text-ink mb-4">Instrument Retailers</h2>
+          <p class="text-ink-muted leading-relaxed mb-8">
+            New Zealand suppliers for digital pianos, keyboards, and accessories. For beginners, a digital keyboard with weighted keys is a great starting point. Ask me for specific recommendations at any time.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {retailers.map(r => (
+              <a
+                href={r.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-white rounded-xl border border-linen p-4 flex items-start gap-3 hover:border-brand hover:shadow-sm transition-all group"
+              >
+                <div class="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center shrink-0 group-hover:bg-brand transition-colors">
+                  <svg class="w-4 h-4 text-brand group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </div>
+                <div>
+                  <p class="font-semibold text-ink text-sm group-hover:text-brand transition-colors">{r.name}</p>
+                  <p class="text-xs text-ink-muted">{r.note}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden shadow-xl" style="max-height: 520px;">
+          <img
+            src={u('/images/resources-piano.jpg')}
+            alt="Music instrument store"
+            class="w-full h-full object-cover object-center"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -150,26 +184,37 @@ const appCategories = [...new Set(apps.map(a => a.category))];
   <!-- Sheet Music -->
   <section class="py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mb-10">
-        <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Sheet Music</p>
-        <h2 class="font-display text-3xl font-bold text-ink mb-4">Where to Find Sheet Music</h2>
-        <p class="text-ink-muted max-w-2xl leading-relaxed">
-          Method books and sheet music are available both locally and online. Note that online international orders may have longer delivery times — plan ahead for method books in particular.
-        </p>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {sheetMusic.map(s => (
-          <a
-            href={s.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-white rounded-xl border border-linen p-5 text-center hover:border-brand hover:shadow-sm transition-all group"
-          >
-            <p class="font-semibold text-ink group-hover:text-brand transition-colors mb-1">{s.name}</p>
-            <p class="text-xs text-ink-muted">{s.type}</p>
-          </a>
-        ))}
+        <div class="rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1" style="max-height: 460px;">
+          <img
+            src={u('/images/resources-pianist.jpg')}
+            alt="Sheet music open on a piano"
+            class="w-full h-full object-cover object-top"
+          />
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Sheet Music</p>
+          <h2 class="font-display text-3xl font-bold text-ink mb-4">Where to Find Sheet Music</h2>
+          <p class="text-ink-muted leading-relaxed mb-8">
+            Method books and sheet music are available both locally and online. Note that online international orders may have longer delivery times — plan ahead for method books in particular.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {sheetMusic.map(s => (
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-white rounded-xl border border-linen p-5 hover:border-brand hover:shadow-sm transition-all group"
+              >
+                <p class="font-semibold text-ink group-hover:text-brand transition-colors mb-1">{s.name}</p>
+                <p class="text-xs text-ink-muted">{s.type}</p>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   </section>
