@@ -55,7 +55,7 @@ const differentiators = [
 <Layout title="Home" description="Creative, flexible and fun piano lessons in Orewa, Auckland. All ages and levels welcome. Book a lesson with Natalie Chapman today.">
 
   <!-- Hero -->
-  <section class="relative overflow-hidden text-white pb-16 md:pb-24">
+  <section class="relative overflow-hidden text-white pb-16 md:pb-0">
     <div class="fixed inset-0 -z-10">
       <Image
         src={u('/images/piano-hero.jpg')}
@@ -68,15 +68,18 @@ const differentiators = [
       <div class="absolute inset-0 bg-black/30"></div>
     </div>
 
-    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+    <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 md:pt-16 md:pb-32">
       <div class="text-center">
-        <Image
-          src={u('/images/logo.png')}
-          alt="Natalie Chapman Piano Studio"
-          width={1920}
-          height={1080}
-          class="h-36 md:h-44 w-auto mx-auto mb-8 drop-shadow-xl rounded-full"
-        />
+        <!--<span class="inline-flex items-center justify-center bg-white rounded-full shadow-2xl mb-8 w-56 h-56 md:w-72 md:h-72 overflow-hidden p-6 md:p-8">-->
+        <span class="inline-flex items-center justify-center rounded-full mb-8 w-76 h-76 md:w-92 md:h-92 overflow-hidden p-6 md:p-8">
+          <Image
+            src={u('/images/logo-no-bg-white.png')}
+            alt="Natalie Chapman Piano Studio"
+            width={1920}
+            height={1080}
+            class="w-full h-auto"
+          />
+        </span>
         <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-4">Orewa, Auckland · All Ages Welcome</p>
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
           Creative, flexible and <em>fun</em>!<br />Come join the music journey!
