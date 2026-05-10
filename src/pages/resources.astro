@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -15,7 +16,7 @@ const apps = [
   {
     name: 'Flashnote Derby',
     icon: '/images/app-flashnote-derby.png',
-    description: 'Turns note memorisation into a fun and challenging game — race horses by identifying notes correctly!',
+    description: 'Turns note memorisation into a fun and challenging game - race horses by identifying notes correctly!',
     platforms: ['iOS', 'Android'],
     category: 'Note Reading & Theory',
   },
@@ -29,7 +30,7 @@ const apps = [
   {
     name: 'The Piano',
     icon: '/images/app-the-piano.png',
-    description: 'A free portable keyboard app — handy for when you are away from your piano and want to practise fingering or check a note.',
+    description: 'A free portable keyboard app - handy for when you are away from your piano and want to practise fingering or check a note.',
     platforms: ['iOS'],
     category: 'General Music',
   },
@@ -55,7 +56,7 @@ const retailers = [
   { name: 'KBB Music', url: 'https://www.kbbmusic.co.nz', note: 'Sheet music, instruments, and accessories' },
   { name: 'Music Planet', url: 'https://www.musicplanet.co.nz', note: 'Instruments and accessories' },
   { name: 'Musicworks', url: 'https://www.musicworks.co.nz', note: 'Nationwide music retailer' },
-  { name: 'Trade Me', url: 'https://www.trademe.co.nz', note: 'Second-hand instruments — great for budget buyers' },
+  { name: 'Trade Me', url: 'https://www.trademe.co.nz', note: 'Second-hand instruments - great for budget buyers' },
 ];
 
 const sheetMusic = [
@@ -75,12 +76,19 @@ const appCategories = [...new Set(apps.map(a => a.category))];
 
   <!-- Page Header -->
   <section class="relative overflow-hidden text-white py-16 md:py-24">
-    <img
-      src={u('/images/piano-hero.jpg')}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      aria-hidden="true"
-    />
+    <div class="fixed inset-0 -z-10">
+      <Image
+        src={u('/images/piano-hero.jpg')}
+              width=1920
+              height=1440
+        alt=""
+        width={1920}
+        height={1440}
+        fill
+        class="object-cover object-center"
+        aria-hidden="true"
+      />
+    </div>
     <div class="absolute inset-0 bg-[#082e32]/82"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Helpful Links</p>
@@ -111,9 +119,11 @@ const appCategories = [...new Set(apps.map(a => a.category))];
             {apps.filter(a => a.category === category).map(app => (
               <div class="bg-white rounded-xl border border-linen p-5 flex flex-col">
                 <div class="flex items-start gap-4 mb-3">
-                  <img
+                  <Image
                     src={u(app.icon)}
                     alt={`${app.name} icon`}
+                    width={56}
+                    height={56}
                     class="w-14 h-14 rounded-xl object-cover shrink-0 border border-linen"
                   />
                   <div class="flex-1 min-w-0">
@@ -171,8 +181,10 @@ const appCategories = [...new Set(apps.map(a => a.category))];
         </div>
 
         <div class="rounded-2xl overflow-hidden shadow-xl" style="max-height: 520px;">
-          <img
+          <Image
             src={u('/images/resources-piano.jpg')}
+      width=690
+      height=920
             alt="Music instrument store"
             class="w-full h-full object-cover object-center"
           />
@@ -187,8 +199,10 @@ const appCategories = [...new Set(apps.map(a => a.category))];
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
         <div class="rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1" style="max-height: 460px;">
-          <img
+          <Image
             src={u('/images/resources-pianist.jpg')}
+      width=690
+      height=1035
             alt="Sheet music open on a piano"
             class="w-full h-full object-cover object-top"
           />
@@ -198,7 +212,7 @@ const appCategories = [...new Set(apps.map(a => a.category))];
           <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Sheet Music</p>
           <h2 class="font-display text-3xl font-bold text-ink mb-4">Where to Find Sheet Music</h2>
           <p class="text-ink-muted leading-relaxed mb-8">
-            Method books and sheet music are available both locally and online. Note that online international orders may have longer delivery times — plan ahead for method books in particular.
+            Method books and sheet music are available both locally and online. Note that online international orders may have longer delivery times - plan ahead for method books in particular.
           </p>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">

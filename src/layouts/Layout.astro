@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
 
 interface Props {
   title: string;
@@ -49,9 +50,13 @@ const isActive = (href: string) =>
         <div class="flex items-center justify-between h-16 md:h-20">
 
           <a href={u('/')} class="flex items-center shrink-0">
-            <img
+            <Image
               src={u('/images/logo.png')}
+                    width=1920
+                    height=1080
               alt="Natalie Chapman Piano Studio"
+              width={1920}
+              height={1080}
               class="h-12 md:h-14 w-auto"
             />
           </a>
@@ -129,9 +134,13 @@ const isActive = (href: string) =>
           <div>
             <a href={u('/')} class="inline-block mb-4">
               <span class="inline-block bg-white rounded-xl p-2">
-                <img
+                <Image
                   src={u('/images/logo.png')}
+                        width=1920
+                        height=1080
                   alt="Natalie Chapman Piano Studio"
+                  width={1920}
+                  height={1080}
                   class="h-14 w-auto"
                 />
               </span>

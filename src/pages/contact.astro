@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import ContactForm from '../components/ContactForm.astro';
 
@@ -13,12 +14,19 @@ const u = (path: string) => `${base}${path}`;
 
   <!-- Page Header -->
   <section class="relative overflow-hidden text-white py-16 md:py-24">
-    <img
-      src={u('/images/mic-hero.jpg')}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      aria-hidden="true"
-    />
+    <div class="fixed inset-0 -z-10">
+      <Image
+        src={u('/images/mic-hero.jpg')}
+              width=1080
+              height=720
+        alt=""
+        width={1080}
+        height={720}
+        fill
+        class="object-cover object-center"
+        aria-hidden="true"
+      />
+    </div>
     <div class="absolute inset-0 bg-black/65"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Say Hello</p>

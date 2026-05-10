@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -11,7 +12,7 @@ const testimonials = [
     role: 'Parent',
   },
   {
-    quote: 'My son always comes home after a lesson buzzing — I wish I could say the same about school!',
+    quote: 'My son always comes home after a lesson buzzing - I wish I could say the same about school!',
     name: 'Heidi',
     role: 'Parent',
   },
@@ -36,12 +37,12 @@ const differentiators = [
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />`,
     title: 'Your Style of Music',
-    body: "Classical, pop, jazz, church band — we follow your passion. Loving what you play is the best motivator.",
+    body: "Classical, pop, jazz, church band - we follow your passion. Loving what you play is the best motivator.",
   },
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`,
     title: 'Flexible Scheduling',
-    body: 'Life is busy. Lessons fit around your family, work, and commitments — not the other way around.',
+    body: 'Life is busy. Lessons fit around your family, work, and commitments - not the other way around.',
   },
   {
     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />`,
@@ -55,16 +56,26 @@ const differentiators = [
 
   <!-- Hero -->
   <section class="relative min-h-[85vh] flex items-center overflow-hidden">
-    <img
-      src={u('/images/piano-hero.jpg')}
-      alt="Piano keys close-up"
-      class="absolute inset-0 w-full h-full object-cover object-center"
-    />
+    <div class="fixed inset-0 -z-10">
+      <Image
+        src={u('/images/piano-hero.jpg')}
+              width=1920
+              height=1440
+        alt=""
+        width={1920}
+        height={1440}
+        fill
+        class="object-cover object-center"
+        aria-hidden="true"
+      />
+    </div>
     <div class="absolute inset-0 bg-gradient-to-b from-[#082e32]/90 via-[#082e32]/80 to-[#082e32]/70"></div>
 
     <div class="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 text-center">
-      <img
+      <Image
         src={u('/images/logo.png')}
+      width=1920
+      height=1080
         alt="Natalie Chapman Piano Studio"
         class="h-36 md:h-44 w-auto mx-auto mb-8 drop-shadow-xl rounded-full"
       />
@@ -127,8 +138,10 @@ const differentiators = [
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
         <div class="rounded-2xl overflow-hidden shadow-xl">
-          <img
+          <Image
             src={u('/images/studio-interior.jpg')}
+      width=690
+      height=920
             alt="Student at the piano in Natalie's home studio"
             class="w-full h-auto"
           />
@@ -140,7 +153,7 @@ const differentiators = [
             A Space Where Music Comes Alive
           </h2>
           <p class="text-ink-muted leading-relaxed mb-6">
-            Natalie's warm home studio in Orewa is set up specifically for learning — with sheet music, educational materials, and a quality piano that students look forward to playing every week.
+            Natalie's warm home studio in Orewa is set up specifically for learning - with sheet music, educational materials, and a quality piano that students look forward to playing every week.
           </p>
           <ul class="space-y-3 mb-8">
             {[
@@ -182,7 +195,7 @@ const differentiators = [
             Natalie is a lifelong musician with over 30 years of experience across classical, contemporary, and jazz styles. She earned her Trinity College Grade 8 at 15 and completed the IRMT diploma <em>with distinction</em> after launching her teaching practice in 2018.
           </p>
           <p class="text-ink-muted leading-relaxed mb-6">
-            Her studio has grown almost entirely through word-of-mouth — the best endorsement of all.
+            Her studio has grown almost entirely through word-of-mouth - the best endorsement of all.
           </p>
           <p class="font-display text-xl text-brand italic mb-8">"Let's Love Music Together!"</p>
           <a href={u('/about')} class="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-dark transition-colors">
@@ -196,8 +209,10 @@ const differentiators = [
         <div class="flex justify-center">
           <div class="relative">
             <div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
-              <img
+              <Image
                 src={u('/images/natalie-portrait.png')}
+      width=622
+      height=488
                 alt="Natalie Chapman, piano teacher"
                 class="w-full h-full object-cover object-top"
               />
@@ -239,8 +254,10 @@ const differentiators = [
 
         <div class="lg:col-span-2 flex justify-center lg:justify-end">
           <div class="rounded-2xl overflow-hidden shadow-xl w-full max-w-xs">
-            <img
+            <Image
               src={u('/images/students.jpg')}
+      width=690
+      height=920
               alt="Happy piano students holding musical note cookies"
               class="w-full h-auto"
             />
@@ -257,7 +274,7 @@ const differentiators = [
         Ready to Start Your Music Journey?
       </h2>
       <p class="text-white/80 max-w-xl mx-auto mb-8 leading-relaxed">
-        Get in touch to ask a question or book your first lesson. No pressure — just music.
+        Get in touch to ask a question or book your first lesson. No pressure - just music.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a

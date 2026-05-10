@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -10,15 +11,23 @@ const faqs = [
     items: [
       {
         q: 'What ages do you teach?',
-        a: 'All ages! I welcome students from around 5–6 years old through to adults and seniors. It is truly never too late to start learning piano. Adult beginners are warmly encouraged.',
+        a: 'All ages! I welcome students from around 5-6 years old through to adults and seniors. It is truly never too late to start learning piano. Adult beginners are warmly encouraged.',
+      },
+      {
+        q: 'Is there a minimum age to start?',
+        a: 'I generally start teaching children from around age 5, depending on their developmental readiness. For younger children, I offer a free introductory session to see whether they are ready to begin piano lessons.',
       },
       {
         q: 'Do I need any experience to start?',
         a: 'Not at all. Complete beginners are very welcome. In your first lesson we will cover the basics together and talk about your musical goals so I can tailor lessons to you from day one.',
       },
       {
-        q: 'My child is very young — when is the right time to start?',
-        a: 'I generally recommend starting formal lessons from around age 5–6, when fine motor skills and the ability to focus for 30 minutes are well developed. For younger children, encouraging music through singing, listening, and playing games at home is a great first step. Feel free to get in touch and we can chat about what is right for your child.',
+        q: 'My child is very young - when is the right time to start?',
+        a: 'I generally recommend starting formal lessons from around age 5-6, when fine motor skills and the ability to focus for 30 minutes are well developed. For younger children, encouraging music through singing, listening, and playing games at home is a great first step. Feel free to get in touch and we can chat about what is right for your child.',
+      },
+      {
+        q: 'Will I need to buy a book?',
+        a: 'Most students will work through a series of method books, and these can either be purchased through me, or once we have discussed which would be most appropriate you can source these yourself. Some suggestions of places to buy these books can be found on the resources page.',
       },
     ],
   },
@@ -27,19 +36,31 @@ const faqs = [
     items: [
       {
         q: 'How long are lessons?',
-        a: 'Lessons are available in 30-minute (young beginners), 45-minute (intermediate students), or 60-minute (advanced students and adults) sessions. We will discuss what suits you best when you first get in touch.',
+        a: 'Lessons are 30 minutes long. Longer lessons may be recommended as students advance.',
       },
       {
-        q: 'How often do lessons take place?',
-        a: 'Weekly lessons are the standard and make the biggest difference for progress. In some circumstances fortnightly lessons can be arranged, though weekly is always recommended for younger students.',
+        q: 'How much do lessons cost?',
+        a: 'Half an hour of private piano tuition is $40, or $75 for an hour.',
       },
       {
-        q: 'Where do lessons take place?',
-        a: 'Lessons are held at my home studio in Orewa, Auckland (15a Ngahere Views). I also offer online lessons via Zoom for students who are unable to come in person — these work surprisingly well!',
+        q: 'Where are lessons held?',
+        a: 'Lessons are held in my home teaching studio in Orewa, Auckland. Parking is available on the street.',
       },
       {
-        q: 'What is your cancellation policy?',
-        a: 'I ask for at least 24 hours notice if you need to cancel or reschedule. Late cancellations without notice may be charged at the full lesson rate. I understand that emergencies happen — if something unexpected comes up, please just get in touch and we will sort something out.',
+        q: 'When are lessons held?',
+        a: 'Lessons are usually weekly, at the same day and time and run with the school terms. Lessons during school holidays are available by arrangement.',
+      },
+      {
+        q: 'Can I stay?',
+        a: 'Parents and caregivers are welcome to stay during lessons if they wish to do so.',
+      },
+      {
+        q: 'How much practice do I need to do?',
+        a: 'It is up to you how much you practice, but the more you practice, the more you will improve. Practicing little and often is better than an occasional long practice session.',
+      },
+      {
+        q: 'What if I can\'t make it to my lesson?',
+        a: 'If you are unable to attend a lesson, please contact me in advance to see if an alternative time can be arranged. Your regular weekly lesson space cannot be refilled if you do not attend. Please refer to the Studio Policy for more details on make-up lessons and cancellations.',
       },
     ],
   },
@@ -48,11 +69,11 @@ const faqs = [
     items: [
       {
         q: 'What equipment do I need at home?',
-        a: 'At minimum, a digital keyboard with at least 61 weighted (touch-sensitive) keys and a sustain pedal. A full 88-key weighted digital piano is ideal for more advanced playing. An acoustic piano is wonderful if you have access to one. I am happy to advise on suitable instruments at different price points — just ask!',
+        a: 'At minimum, a digital keyboard with at least 61 weighted keys and a sustain pedal is recommended. A full 88-key weighted digital piano is ideal for more advanced playing. I am happy to advise on suitable instruments if you need help choosing.',
       },
       {
-        q: 'How much do lessons cost?',
-        a: 'Please get in touch for current pricing. Rates depend on lesson length and frequency. I offer competitive rates for the Orewa and Hibiscus Coast area.',
+        q: 'Will I need my own keyboard?',
+        a: 'Yes. You will need your own piano or keyboard to practice on at home. I can recommend suitable second-hand options and local retailers.',
       },
     ],
   },
@@ -61,15 +82,15 @@ const faqs = [
     items: [
       {
         q: 'What styles of music will I learn?',
-        a: 'This is your musical journey — we follow your interests! Whether you want to explore classical repertoire, contemporary pop, jazz, gospel, worship music, or a mix of everything, lessons are tailored to what excites you. There is no rigid syllabus here.',
+        a: 'This is your musical journey - we follow your interests! Whether you want to explore classical repertoire, contemporary pop, jazz, gospel, worship music, or a mix of everything, lessons are tailored to what excites you. There is no rigid syllabus here.',
       },
       {
         q: 'Do you prepare students for music exams?',
-        a: 'Yes! I prepare students for Trinity College London graded exams and can also work towards ABRSM examinations. Exams are entirely optional — many students prefer to focus on music they love without the pressure of formal assessment, and that is perfectly fine.',
+        a: 'Yes! I prepare students for Trinity College London graded exams and can also work towards ABRSM examinations. Exams are entirely optional, and many students prefer to focus on music they love without the pressure of formal assessment.',
       },
       {
         q: 'Will I learn music theory as well as playing?',
-        a: 'Yes — understanding music theory is woven into lessons naturally. Things like reading notation, understanding rhythm, and basic harmony are introduced progressively and in a way that makes sense in the context of the music you are learning.',
+        a: 'Yes - understanding music theory is woven into lessons naturally. Things like reading notation, understanding rhythm, and basic harmony are introduced progressively and in a way that makes sense in the context of the music you are learning.',
       },
     ],
   },
@@ -78,17 +99,22 @@ const faqs = [
 
 <Layout
   title="FAQ"
-  description="Frequently asked questions about piano lessons at Natalie Chapman Piano Studio — lesson lengths, pricing, ages, styles, exams, and more."
+  description="Frequently asked questions about piano lessons at Natalie Chapman Piano Studio - lesson lengths, pricing, ages, styles, exams, and more."
 >
 
   <!-- Page Header -->
   <section class="relative overflow-hidden text-white py-16 md:py-24">
-    <img
-      src={u('/images/piano-hero.jpg')}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      aria-hidden="true"
-    />
+    <div class="fixed inset-0 -z-10">
+      <Image
+        src={u('/images/piano-hero.jpg')}
+        alt=""
+        width={1920}
+        height={1440}
+        fill
+        class="object-cover object-center"
+        aria-hidden="true"
+      />
+    </div>
     <div class="absolute inset-0 bg-[#082e32]/82"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Common Questions</p>

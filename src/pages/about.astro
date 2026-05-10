@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -11,27 +12,34 @@ const pianoBenefits = [
   'Music provides a healthy creative outlet for self-expression and emotional wellbeing.',
   'Piano skills open the door to understanding and playing many other instruments.',
   'Regular practice builds discipline, patience, and a sense of achievement.',
-  'Piano can reduce stress and anxiety — playing music is deeply meditative.',
+  'Piano can reduce stress and anxiety - playing music is deeply meditative.',
   'Music connects people socially, from joining a band to playing at family gatherings.',
   'Piano is a lifelong skill that brings joy at every age and stage of life.',
-  'Students can explore a huge range of genres — classical, jazz, pop, gospel, and more.',
+  'Students can explore a huge range of genres - classical, jazz, pop, gospel, and more.',
   'Learning music sharpens listening skills and an appreciation for sound.',
 ];
 ---
 
 <Layout
   title="About Us"
-  description="Meet Natalie Chapman — piano teacher in Orewa, Auckland with over 30 years of musical experience and an IRMT diploma with distinction."
+  description="Meet Natalie Chapman - piano teacher in Orewa, Auckland with over 30 years of musical experience and an IRMT diploma with distinction."
 >
 
   <!-- Page Header -->
   <section class="relative overflow-hidden text-white py-16 md:py-24">
-    <img
-      src={u('/images/piano-hero.jpg')}
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover object-center"
-      aria-hidden="true"
-    />
+    <div class="fixed inset-0 -z-10">
+      <Image
+        src={u('/images/piano-hero.jpg')}
+              width=1920
+              height=1440
+        alt=""
+        width={1920}
+        height={1440}
+        fill
+        class="object-cover object-center"
+        aria-hidden="true"
+      />
+    </div>
     <div class="absolute inset-0 bg-[#082e32]/82"></div>
     <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Our Story</p>
@@ -48,8 +56,10 @@ const pianoBenefits = [
         <div class="lg:col-span-1">
           <div class="bg-white rounded-2xl border border-linen overflow-hidden sticky top-24 shadow-sm">
             <div class="aspect-[3/4] overflow-hidden">
-              <img
+              <Image
                 src={u('/images/natalie-about.jpg')}
+      width=690
+      height=896
                 alt="Natalie Chapman at the piano"
                 class="w-full h-full object-cover object-top"
               />
@@ -90,10 +100,10 @@ const pianoBenefits = [
             <h2 class="font-display text-3xl font-bold text-ink mb-6">A Lifelong Love of Music</h2>
             <div class="space-y-4 text-ink-muted leading-relaxed">
               <p>
-                Natalie is a lifelong musician raised by two musical parents who gave her a deep appreciation for music from an early age. She began formal piano training at the age of five and went on to earn her Trinity College Grade 8 certification at just 15 years old — a milestone that reflected not only her talent, but her dedication to the craft.
+                Natalie is a lifelong musician raised by two musical parents who gave her a deep appreciation for music from an early age. She began formal piano training at the age of five and went on to earn her Trinity College Grade 8 certification at just 15 years old - a milestone that reflected not only her talent, but her dedication to the craft.
               </p>
               <p>
-                With over 30 years of playing experience across classical, contemporary, and jazz styles, Natalie brings a breadth of musical knowledge to her teaching. She launched her teaching practice in 2018 and completed the Institute of Registered Music Teachers (IRMT) diploma <em>with distinction</em> — cementing both her expertise and her commitment to excellent music education.
+                With over 30 years of playing experience across classical, contemporary, and jazz styles, Natalie brings a breadth of musical knowledge to her teaching. She launched her teaching practice in 2018 and completed the Institute of Registered Music Teachers (IRMT) diploma <em>with distinction</em> - cementing both her expertise and her commitment to excellent music education.
               </p>
               <p>
                 Her studio has grown almost entirely through word-of-mouth referrals from happy students and parents, which she considers the best endorsement of all.
@@ -109,10 +119,10 @@ const pianoBenefits = [
                 The studio's mission is simple: <strong>providing engaging piano lessons that are positive, fun and student-centred.</strong>
               </p>
               <p class="text-ink-muted leading-relaxed mb-4">
-                Every student is different — different age, different goals, different learning style. Rather than following a rigid curriculum, Natalie takes the time to understand what motivates each student and designs lessons around that.
+                Every student is different - different age, different goals, different learning style. Rather than following a rigid curriculum, Natalie takes the time to understand what motivates each student and designs lessons around that.
               </p>
               <p class="text-ink-muted leading-relaxed">
-                Whether a student wants to prepare for Trinity College exams, play worship music at church, perform pop songs at a school concert, or simply enjoy music for the love of it — Natalie's approach is to focus not only on progress but also on creativity, musical exploration, and the sheer joy of playing.
+                Whether a student wants to prepare for Trinity College exams, play worship music at church, perform pop songs at a school concert, or simply enjoy music for the love of it - Natalie's approach is to focus not only on progress but also on creativity, musical exploration, and the sheer joy of playing.
               </p>
             </div>
           </div>
@@ -121,8 +131,10 @@ const pianoBenefits = [
           <div class="bg-white rounded-2xl border border-linen overflow-hidden shadow-sm">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-0">
               <div class="overflow-hidden">
-                <img
+                <Image
                   src={u('/images/students.jpg')}
+      width=690
+      height=920
                   alt="Jasper and Cooper, happy piano students holding musical note cookies"
                   class="w-full h-full object-cover"
                   style="min-height: 280px;"
@@ -132,7 +144,7 @@ const pianoBenefits = [
                 <p class="text-brand text-sm font-semibold tracking-widest uppercase mb-3">Happy Students</p>
                 <h3 class="font-display text-2xl font-bold text-ink mb-4">Results That Speak for Themselves</h3>
                 <p class="text-ink-muted text-sm leading-relaxed">
-                  Natalie's students consistently come back week after week — not because they have to, but because they want to. When learning is fun and feels personal, progress happens naturally.
+                  Natalie's students consistently come back week after week - not because they have to, but because they want to. When learning is fun and feels personal, progress happens naturally.
                 </p>
               </div>
             </div>
@@ -171,7 +183,7 @@ const pianoBenefits = [
   <section class="py-16 text-center">
     <div class="max-w-xl mx-auto px-4">
       <h2 class="font-display text-2xl md:text-3xl font-bold text-ink mb-4">Ready to get started?</h2>
-      <p class="text-ink-muted mb-8">Get in touch to ask a question or book your first lesson — Natalie would love to hear from you.</p>
+      <p class="text-ink-muted mb-8">Get in touch to ask a question or book your first lesson - Natalie would love to hear from you.</p>
       <a
         href={u('/contact')}
         class="inline-flex items-center px-6 py-3 rounded-lg font-semibold text-white bg-brand hover:bg-brand-dark transition-colors"
